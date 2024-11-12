@@ -8,9 +8,10 @@ import app.models as models
 from app.config import settings
 from app.routers import products, users, auth
 from fastapi.middleware.cors import CORSMiddleware
+from app.config import settings
 
-models.Base.metadata.create_all(bind=engine)
-
+# models.Base.metadata.create_all(bind=engine)
+ 
 app = FastAPI()
 
 origins = ["http://www.google.com"]
@@ -26,8 +27,8 @@ app.add_middleware(
     
 while True:
     try:
-        conn = psycopg2.connect(host='localhost', database='fastapi', 
-                                user='postgres', password='password', 
+        conn = psycopg2.connect(host=settings.database_hostname, database=settings.database_name, 
+                                user=settings.database_username, password=settings.database_password, 
                                 cursor_factory=RealDictCursor)
         cursor = conn.cursor()
         print("Connection stablished with PostgreSQL")

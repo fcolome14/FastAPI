@@ -1,8 +1,8 @@
 """create product table
 
-Revision ID: 1c24152bc3b1
+Revision ID: 3da7f62809dd
 Revises: 
-Create Date: 2024-11-08 14:24:01.470613
+Create Date: 2024-11-11 16:11:37.741095
 
 """
 from typing import Sequence, Union
@@ -12,18 +12,18 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '1c24152bc3b1'
+revision: str = '3da7f62809dd'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.create_table('products', sa.Column('id', sa.Integer(), nullable=False, primary_key=True),
-                    sa.Column('name', sa.String(), nullable=False))
+    op.create_table('product', sa.Column('id', sa.Integer(), primary_key=True, autoincrement=True))
+    
     pass
 
 
 def downgrade() -> None:
-    op.drop_table('products')
+    op.drop_table('product')
     pass

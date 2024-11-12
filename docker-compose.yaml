@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # FastAPI app container
+
+# PostgreSQL database container
+  postgres:
+    image: postgres:14  # Use a PostgreSQL image (version 14)
+    container_name: postgres-container
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=fastapi
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent storage for PostgreSQL
+    networks:
+      - app-network
+
+  fastapi:
+    build: .
+    container_name: fastapi-container
+    ports:
+      - 8000:8000  # Exposes FastAPI on port 8000
+    environment:
+      - DATABASE_HOSTNAME=postgres  # Points to the postgres service
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/fastapi
+    networks:
+      - app-network
+    depends_on:
+      - postgres  # Ensures that the PostgreSQL container starts first
+  
+  nginx:
+    image: nginx:latest
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - app-network
+    depends_on:
+      - fastapi
+
+networks:
+  app-network:
+    driver: bridge
+
+# Persistent volume to store PostgreSQL data
+volumes:
+  postgres_data:

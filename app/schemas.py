@@ -14,7 +14,7 @@ class UserOut(BaseModel):
 class ProductBase(BaseModel):
     name: str
     price: int
-    user: UserOut
+    # user: UserOut
 
 class ProductUpdate(ProductBase):
     published: bool
