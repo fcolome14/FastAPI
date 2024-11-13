@@ -37,6 +37,8 @@ jobs:
           cd docs/
           make html
 
-      - name: Run ghp-import
+      - name: Run ghp-import with GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Ensure GitHub Actions uses the token
         run: |
-          ghp-import -n -p -f docs/_build/html  # Deploy to GitHub Pages
+          ghp-import -n -p -f docs/_build/html --repo https://github.com/${{ github.repository }}.git
