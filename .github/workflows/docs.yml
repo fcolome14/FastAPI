@@ -37,6 +37,10 @@ jobs:
         run: |
           cd docs  # Navigate to the docs folder
           sphinx-build -b html . _build/html  # Build the docs
+          
+      - name: Run ghp-import
+        run: | 
+          ghp-import -n -p -f docs/_build/html
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v3
