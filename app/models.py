@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 class Product(Base):
     
-    """" Product table model """
+    """" Product table model"""
     
     __tablename__ = "product"
     
