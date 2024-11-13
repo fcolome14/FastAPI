@@ -39,7 +39,7 @@ jobs:
           sphinx-build -b html . _build/html  # Build the docs
 
       - name: Upload documentation artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: documentation
           path: docs/_build/html  # Upload the generated HTML docs
