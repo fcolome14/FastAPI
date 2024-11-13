@@ -5,7 +5,9 @@ from sqlalchemy.types import TIMESTAMP
 from sqlalchemy.orm import relationship
 
 class Product(Base):
+    
     """" Docstrings Product """
+    
     __tablename__ = "product"
     
     id = Column(Integer, primary_key=True, nullable=False)
@@ -18,7 +20,9 @@ class Product(Base):
     user = relationship("Users") #Its referencing the "Users" class sqlalchemy
 
 class Users(Base):
+    
     """Docstring Users """
+    
     __tablename__ = "user"
     
     id = Column(Integer, primary_key=True, nullable=False)
