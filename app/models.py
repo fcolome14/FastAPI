@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 class Product(Base):
     
-    """" Docstrings Product """
+    """" Product table model """
     
     __tablename__ = "product"
     
@@ -21,7 +21,7 @@ class Product(Base):
 
 class Users(Base):
     
-    """Docstring Users """
+    """ User table model """
     
     __tablename__ = "user"
     
