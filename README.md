@@ -4,4 +4,4 @@
 
 ## Documentation
 
-You can find the full project documentation [here](https://fcolome14.github.io/FastAPI/).
+
