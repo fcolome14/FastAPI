@@ -11,6 +11,9 @@ router = APIRouter(prefix="/products", tags=['Products'])
 
 @router.post("/addproducts")
 def add_product(products: schemas.ProductCreate, db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+    
+    """Add new products """
+    
     # cursor.execute(""" INSERT INTO products (name, price) VALUES (%s, %s) RETURNING *""", (product.name, product.price))
     # new_product = cursor.fetchall()
     # conn.commit() #Push changes to db
