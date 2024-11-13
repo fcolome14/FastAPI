@@ -12,6 +12,13 @@ Base = declarative_base()
 
 # Creating session to db
 def get_db():
+    
+    """Get database instance
+
+    Yields:
+        _type_: Database calling instance
+    """
+    
     db = SessionLocal()
     try:
         yield db
